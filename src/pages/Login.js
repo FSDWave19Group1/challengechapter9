@@ -3,20 +3,21 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        alert("success");
-
+        // alert("success");
         getCurrentUser();
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.code);
@@ -26,7 +27,9 @@ export default function Register() {
 
   const getCurrentUser = async () => {
     const user = await getAuth().currentUser;
-    console.log("User: ", user);
+    // console.log("User: ", user);
+    console.log("Access Token: ", user.accessToken);
+    localStorage.setItem("auth-token", user.accessToken);
   };
 
   return (
