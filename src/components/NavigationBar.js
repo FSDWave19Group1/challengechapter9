@@ -23,7 +23,7 @@ const NavigationBar = (props) => {
       setShowOnLogout("d-none");
     }
     // console.log("navbar token:" + token);
-  });
+  }, [localStorage]);
 
   const logOutOnClickHandle = (event) => {
     //const auth = getAuth().currentUser;

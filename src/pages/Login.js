@@ -4,11 +4,13 @@ import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -17,7 +19,6 @@ export default function Register() {
       .then((userCredential) => {
         // alert("success");
         getCurrentUser();
-        navigate("/");
       })
       .catch((error) => {
         console.log(error.code);
@@ -30,6 +31,7 @@ export default function Register() {
     // console.log("User: ", user);
     console.log("Access Token: ", user.accessToken);
     localStorage.setItem("auth-token", user.accessToken);
+    navigate("/");
   };
 
   return (
