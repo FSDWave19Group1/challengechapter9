@@ -14,7 +14,7 @@ const firebaseConfig = {
   messagingSenderId: "209156721349",
   appId: "1:209156721349:web:50a76ae1c0c87a63efbeac",
   measurementId: "G-43CHL22358",
-  databaseURL: 'https://challenge9-53323-default-rtdb.firebaseio.com/'
+  databaseURL: "https://challenge9-53323-default-rtdb.firebaseio.com/",
 };
 
 // Initialize Firebase
