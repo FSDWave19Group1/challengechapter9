@@ -1,14 +1,14 @@
 import React from "react";
-// import Navbar from "";
+import NavigationBar from "../NavigationBar"
 // import Footer from "";
 
 const Layout = ({ children }) => {
   return (
     <>
       <div>
-        {/* <header>
-          <Navbar />
-        </header> */}
+        <header>
+          <NavigationBar />
+        </header>
         <main className="container">{children}</main>
         {/* <footer>
           <Footer />
