@@ -5,12 +5,21 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "./components/layouts/default";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <Router>
       <Routes>
         {/* <Route path="/" element={<Home />}></Route> */}
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <Home />
+            </Layout>
+          }
+        />
         <Route
           path="/login"
           element={
