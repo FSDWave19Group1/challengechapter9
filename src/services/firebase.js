@@ -16,6 +16,9 @@ const firebaseConfig = {
   measurementId: "G-43CHL22358",
   databaseURL: "https://challenge9-53323-default-rtdb.firebaseio.com/",
 };
+const app = initializeApp(firebaseConfig);
 
+// Get a reference to the database service
+const database = getDatabase(app);
 // Initialize Firebase
 export default initializeApp(firebaseConfig);
