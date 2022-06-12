@@ -4,12 +4,16 @@ import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { UserAuth } from "../context/AuthContext";
 
 export default function Register() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [isLoginPage, setLoginPage] = useState(false);
+
+  // const [userEmail, setUserEmail] = useState("");
+  const { setUserEmail } = UserAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +22,7 @@ export default function Register() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // alert("success");
+        setUserEmail(userCredential.user.email);
         getCurrentUser();
       })
       .catch((error) => {
@@ -29,8 +34,8 @@ export default function Register() {
   const getCurrentUser = async () => {
     const user = await getAuth().currentUser;
     // console.log("User: ", user);
-    console.log("Access Token: ", user.accessToken);
-    localStorage.setItem("auth-token", user.accessToken);
+    // console.log("Access Token: ", user.accessToken);
+    // localStorage.setItem("auth-token", user.accessToken);
     navigate("/");
   };
 
