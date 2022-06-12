@@ -17,5 +17,7 @@ const firebaseConfig = {
   databaseURL: "https://challenge9-53323-default-rtdb.firebaseio.com/",
 };
 
+const app = initializeApp(firebaseConfig);
+
 // Initialize Firebase
 export default initializeApp(firebaseConfig);
