@@ -18,8 +18,9 @@ export const Leaderboard = () => {
         }
         detail.push(user)
       })
-      setInfo(detail)
-      console.log(info)
+      const details = detail.sort((a, b) => (b.score_total - a.score_total))
+      console.log(details)
+      setInfo(details)
       
     });
   }, [])
@@ -37,7 +38,12 @@ export const Leaderboard = () => {
     </tr>
   </thead>
   <tbody>
-    {info.map((item, key) => {
+    {
+
+    
+    
+    
+    info.map((item, key) => {
       return(
 <tr>
       <td>{key +1}</td>
