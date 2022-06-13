@@ -6,8 +6,7 @@ import { useState, useEffect } from "react";
 import { UserAuth } from "../context/AuthContext";
 
 const NavigationBar = (props) => {
-  // const [userEmail, setUserEmail] = useState("");
-  const { setUserEmail } = UserAuth();
+  // const { setLoggedinEmail } = UserAuth();
   // const [isAuthenticated, setAuthenticated] = useState(false);
   // const [showOnLogin, setShowOnLogin] = useState("d-none");
   // const [showOnLogout, setShowOnLogout] = useState("d-block");
@@ -19,23 +18,25 @@ const NavigationBar = (props) => {
   //   //     authorization: token,
   //   //   },
   //   // };
-  //   if (localStorage.getItem("auth-token")) {
-  //     setShowOnLogin("d-block");
-  //     setShowOnLogout("d-none");
-  //   }
+  //   // if (localStorage.getItem("auth-token")) {
+  //   //   setShowOnLogin("d-block");
+  //   //   setShowOnLogout("d-none");
+  //   // }
   //   // console.log("navbar token:" + token);
+  //   setUserEmail(localStorage.getItem("userEmail"));
   // }, [localStorage]);
 
-  // const logOutOnClickHandle = (event) => {
-  //   //const auth = getAuth().currentUser;
-  //   localStorage.clear();
-  // };
-  const { userEmail } = UserAuth();
-  console.log("useremail:" + userEmail);
+  const { loggedinEmail } = UserAuth();
+  console.log("useremail:" + loggedinEmail);
 
-  const showLoginPage = () => {
-    props.onShowLoginPage();
+  const logOutOnClickHandle = (event) => {
+    //const auth = getAuth().currentUser;
+    localStorage.clear();
   };
+
+  // const showLoginPage = () => {
+  //   props.onShowLoginPage();
+  // };
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -48,12 +49,12 @@ const NavigationBar = (props) => {
             <Nav.Link href="/game/list">Games List</Nav.Link>
           </Nav>
 
-          {userEmail ? (
+          {loggedinEmail ? (
             <Nav>
               <Nav.Link
                 // className={showOnLogin}
                 href="/"
-                //onClick={logOutOnClickHandle}
+                onClick={logOutOnClickHandle}
               >
                 Logout
               </Nav.Link>
@@ -63,14 +64,14 @@ const NavigationBar = (props) => {
               <Nav.Link
                 // className={showOnLogout}
                 href="/login"
-                onClick={showLoginPage}
+                // onClick={showLoginPage}
               >
                 Login
               </Nav.Link>
               <Nav.Link
                 // className={showOnLogout}
                 href="/register"
-                onClick={showLoginPage}
+                // onClick={showLoginPage}
               >
                 Register
               </Nav.Link>

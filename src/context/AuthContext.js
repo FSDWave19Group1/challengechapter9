@@ -3,10 +3,10 @@ import { useContext, createContext, useState } from "react";
 const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const [userEmail, setUserEmail] = useState("");
+  const [loggedinEmail, setLoggedinEmail] = useState("");
 
   return (
-    <UserContext.Provider value={{ userEmail, setUserEmail }}>
+    <UserContext.Provider value={{ loggedinEmail, setLoggedinEmail }}>
       {" "}
       {children}
     </UserContext.Provider>

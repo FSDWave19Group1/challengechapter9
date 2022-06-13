@@ -9,8 +9,12 @@ import Profile from "./pages/Profile";
 import { UserAuth } from "./context/AuthContext";
 
 function App() {
-  const { userEmail } = UserAuth();
-  console.log("user:" + userEmail);
+  const { loggedinEmail } = UserAuth();
+  console.log("user:" + loggedinEmail);
+
+  // const [userLoggon, setUserLoggon] = useState("");
+
+  // setUserLoggon
 
   return (
     <Router>

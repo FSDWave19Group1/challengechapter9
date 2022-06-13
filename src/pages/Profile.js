@@ -14,11 +14,19 @@ export default function Profile() {
   //const [userID, setUserID] = useState("Ht2AaA00rPMbsECgWwsvUGe71M62");
   // const [email, setEmail] = useState("vaee@gmail.com");
 
-  const { userEmail } = UserAuth();
-
+  const { loggedinEmail } = UserAuth();
+  console.log("useremail:" + localStorage.getItem("userEmail"));
   // const [info, setInfo] = useState({});
+  // const [detailUser, setDetailUser] = useState({
+  //   id: "",
+  //   username: "",
+  //   email: "",
+  //   biodata: "",
+  //   score_total: "",
+  // });
+
   const [detailUser, setDetailUser] = useState({});
-  console.log("useremail:" + userEmail);
+  // let userfiltered = {};
 
   useEffect((props) => {
     const db = getDatabase();
@@ -36,8 +44,17 @@ export default function Profile() {
         };
         userDetail.push(user);
       });
-      setDetailUser(userDetail.find((x) => x.email === userEmail));
+      const userfiltered = userDetail.find(
+        (x) => x.email === localStorage.getItem("userEmail")
+      );
       console.log(userDetail);
+      setDetailUser({
+        id: userfiltered.id,
+        username: userfiltered.username,
+        email: userfiltered.email,
+        biodata: userfiltered.biodata,
+        score_total: userfiltered.score_total,
+      });
     });
   }, []);
 

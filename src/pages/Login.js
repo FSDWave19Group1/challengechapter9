@@ -6,7 +6,6 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 
-
 export default function Register() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -14,7 +13,7 @@ export default function Register() {
   const [isLoginPage, setLoginPage] = useState(false);
 
   // const [userEmail, setUserEmail] = useState("");
-  const { setUserEmail } = UserAuth();
+  const { setLoggedinEmail } = UserAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,8 +22,11 @@ export default function Register() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // alert("success");
-        setUserEmail(userCredential.user.email);
+        localStorage.setItem("userEmail", userCredential.user.email);
+        // setLoggedinEmail(userCredential.user.email);
+        setLoggedinEmail(localStorage.getItem("userEmail"));
         getCurrentUser();
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.code);
@@ -37,7 +39,6 @@ export default function Register() {
     // console.log("User: ", user);
     // console.log("Access Token: ", user.accessToken);
     // localStorage.setItem("auth-token", user.accessToken);
-    navigate("/");
   };
 
   return (

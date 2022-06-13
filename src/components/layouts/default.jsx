@@ -1,16 +1,18 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import NavigationBar from "../NavigationBar"
 import Footer from "../Footer/Footer";
 import { UserAuth } from "../../context/AuthContext";
 
 
-
 const Layout = ({ children }) => {
   
   // const [isLoginPage, setIsLoginPage] = useState(false);
+  // const { loggedinEmail, setLoggedinEmail } = UserAuth();
+  // console.log("user:" + loggedinEmail);  
 
-  const { userEmail } = UserAuth();
-  console.log("user:" + userEmail);  
+  // useEffect(() => {
+  //   setLoggedinEmail(localStorage.getItem("userEmail"));
+  // }, [localStorage]);
 
   return ( 
     <>
