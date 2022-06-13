@@ -1,0 +1,13 @@
+.game-list-background {
+  background-image: url("../../../public/main-bg.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.grid-card {
+  padding-top: 3em;
+  padding-bottom: 5em;
+  display: grid;
+  gap: 2em;
+  grid-template-columns: 1fr 1fr 1fr;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import NavigationBar from "../NavigationBar"
+import NavigationBar from "../NavigationBar";
 import Footer from "../Footer/Footer";
 
 const Layout = ({ children }) => {
@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
         <header>
           <NavigationBar />
         </header>
-        <main className="container">{children}</main>
+        <main>{children}</main>
         <footer>
           <Footer />
         </footer>
