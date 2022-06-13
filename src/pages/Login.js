@@ -1,15 +1,24 @@
 import { useState } from "react";
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
 import { useNavigate } from "react-router-dom";
-
+import { UserAuth } from "../context/AuthContext";
 
 export default function Register() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [isLoginPage, setLoginPage] = useState(false);
+
+  // const [userEmail, setUserEmail] = useState("");
+  const { setLoggedinEmail } = UserAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +27,11 @@ export default function Register() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // alert("success");
+        localStorage.setItem("userEmail", userCredential.user.email);
+        // setLoggedinEmail(userCredential.user.email);
+        setLoggedinEmail(localStorage.getItem("userEmail"));
         getCurrentUser();
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.code);
@@ -29,21 +42,15 @@ export default function Register() {
   const getCurrentUser = async () => {
     const user = await getAuth().currentUser;
     // console.log("User: ", user);
-    console.log("Access Token: ", user.accessToken);
-    localStorage.setItem("auth-token", user.accessToken);
-    navigate("/");
+    // console.log("Access Token: ", user.accessToken);
+    // localStorage.setItem("auth-token", user.accessToken);
   };
 
   const handleOnClick = () => {
-
-    
-
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
+    signInWithPopup(auth, provider);
   };
-
-
 
   return (
     <div>
@@ -62,7 +69,6 @@ export default function Register() {
             />
           </InputGroup>
         </div>
-
         <div>
           <InputGroup className="col-md-5  my-3">
             <InputGroup.Text>Password</InputGroup.Text>
@@ -73,15 +79,12 @@ export default function Register() {
             />
           </InputGroup>
         </div>
-
         <p>
           <a href="/forgot">Forgot Password?</a>
         </p>
-
         <Button className="mt-4" variant="success" type="submit">
           Login
-        </Button>{' '}
-
+        </Button>{" "}
         <Button className="mt-4" variant="primary" onClick={handleOnClick}>
           Login with Google
         </Button>
@@ -89,5 +92,3 @@ export default function Register() {
     </div>
   );
 }
-
-

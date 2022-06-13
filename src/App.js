@@ -3,13 +3,21 @@ import "./App.css";
 import firebase from "./services/firebase";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "./components/layouts/default";
 import Home from "./pages/Home";
 import Forgot from "./pages/Forgot";
 import GameList from "./pages/GameList";
+import Profile from "./pages/Profile";
+import { UserAuth } from "./context/AuthContext";
 
 function App() {
+  const { loggedinEmail } = UserAuth();
+  console.log("user:" + loggedinEmail);
+
+  // const [userLoggon, setUserLoggon] = useState("");
+
+  // setUserLoggon
+
   return (
     <Router>
       <Routes>
@@ -55,6 +63,15 @@ function App() {
             </Layout>
           }
         ></Route>
+        <Route
+          path="/userprofile"
+          element={
+            <Layout>
+              <Profile />
+            </Layout>
+          }
+        ></Route>
+        {/* <Route path="/game/list" element={<GameList />}></Route> */}
         {/* <Route path="/game/suit" element={<GameSuit />}></Route> */}
       </Routes>
     </Router>

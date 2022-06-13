@@ -2,33 +2,41 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import { useState, useEffect } from "react";
-import { getAuth, signOut } from "firebase/auth";
+// import { getAuth, signOut } from "firebase/auth";
+import { UserAuth } from "../context/AuthContext";
 
 const NavigationBar = (props) => {
-  // const [username, setUsername] = useState("");
-
+  // const { setLoggedinEmail } = UserAuth();
   // const [isAuthenticated, setAuthenticated] = useState(false);
-  const [showOnLogin, setShowOnLogin] = useState("d-none");
-  const [showOnLogout, setShowOnLogout] = useState("d-block");
+  // const [showOnLogin, setShowOnLogin] = useState("d-none");
+  // const [showOnLogout, setShowOnLogout] = useState("d-block");
 
-  useEffect(() => {
-    // const token = localStorage.getItem("auth-token");
-    // const config = {
-    //   headers: {
-    //     authorization: token,
-    //   },
-    // };
-    if (localStorage.getItem("auth-token")) {
-      setShowOnLogin("d-block");
-      setShowOnLogout("d-none");
-    }
-    // console.log("navbar token:" + token);
-  }, [localStorage]);
+  // useEffect(() => {
+  //   // const token = localStorage.getItem("auth-token");
+  //   // const config = {
+  //   //   headers: {
+  //   //     authorization: token,
+  //   //   },
+  //   // };
+  //   // if (localStorage.getItem("auth-token")) {
+  //   //   setShowOnLogin("d-block");
+  //   //   setShowOnLogout("d-none");
+  //   // }
+  //   // console.log("navbar token:" + token);
+  //   setUserEmail(localStorage.getItem("userEmail"));
+  // }, [localStorage]);
+
+  const { loggedinEmail } = UserAuth();
+  console.log("useremail:" + loggedinEmail);
 
   const logOutOnClickHandle = (event) => {
     //const auth = getAuth().currentUser;
     localStorage.clear();
   };
+
+  // const showLoginPage = () => {
+  //   props.onShowLoginPage();
+  // };
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -37,25 +45,40 @@ const NavigationBar = (props) => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/profile">Profile</Nav.Link>
+            <Nav.Link href="/userprofile">Profile</Nav.Link>
             <Nav.Link href="/game/list">Games List</Nav.Link>
           </Nav>
-          <Nav>
-            <Nav.Link className={showOnLogout} href="/login">
-              Login
-            </Nav.Link>
-            <Nav.Link className={showOnLogout} href="/register">
-              Register
-            </Nav.Link>
-            <Nav.Link
-              className={showOnLogin}
-              href="/"
-              onClick={logOutOnClickHandle}
-            >
-              Logout
-            </Nav.Link>
-            {/* <Navbar.Text className={showOnLogin}>Hi, {username}</Navbar.Text> */}
-          </Nav>
+
+          {loggedinEmail ? (
+            <Nav>
+              <Nav.Link
+                // className={showOnLogin}
+                href="/"
+                onClick={logOutOnClickHandle}
+              >
+                Logout
+              </Nav.Link>
+            </Nav>
+          ) : (
+            <Nav>
+              <Nav.Link
+                // className={showOnLogout}
+                href="/login"
+                // onClick={showLoginPage}
+              >
+                Login
+              </Nav.Link>
+              <Nav.Link
+                // className={showOnLogout}
+                href="/register"
+                // onClick={showLoginPage}
+              >
+                Register
+              </Nav.Link>
+            </Nav>
+          )}
+
+          {/* <Navbar.Text className={showOnLogin}>Hi, {username}</Navbar.Text> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>
