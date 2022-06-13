@@ -1,0 +1,65 @@
+body, html {
+    height: 100%;
+}
+
+.bg-game {
+    background-color:#9C835F;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.txt-style {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.pict {
+    animation: shake .5s linear infinite .75s;
+}
+
+.pictSize {
+    height: 50vh;
+}
+
+@keyframes shake {
+    0% {transform: rotate(0)}
+    25% {transform: rotate(-2deg)}
+    50% {transform: rotate(0)}
+    75% {transform: rotate(2deg)}
+    100% {transform: rotate(0)}
+}
+
+
+/* .refresh {
+    height: 50px;
+    animation: rotate 3s infinite;
+} */
+
+/* @keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-355deg);
+    }
+} */
+
+.bg-batu, .bg-kertas, .bg-gunting, .bg-com-batu, .bg-com-kertas, .bg-com-gunting {
+    height: 14vh;
+}
+
+.bg-batu:hover, .bg-gunting:hover, .bg-kertas:hover {
+    background-color: #C4C4C4;
+    border-radius: 30px;
+}
+
+.bg-abu{
+    background-color: #C4C4C4;
+    border-radius: 30px;
+}

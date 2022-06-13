@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
+import GameSuite from './components/Game';
 import BackgroundImagePage from './components/landingPage';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         </a>
       </header> */}
       <BackgroundImagePage />
+      <GameSuite />
     </div>
   );
 }
