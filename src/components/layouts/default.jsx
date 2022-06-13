@@ -1,6 +1,6 @@
 import React from "react";
-import NavigationBar from "../NavigationBar"
-// import Footer from "";
+import NavigationBar from "../NavigationBar";
+import Footer from "../Footer/Footer";
 
 const Layout = ({ children }) => {
   return (
@@ -9,10 +9,10 @@ const Layout = ({ children }) => {
         <header>
           <NavigationBar />
         </header>
-        <main className="container">{children}</main>
-        {/* <footer>
+        <main>{children}</main>
+        <footer>
           <Footer />
-        </footer> */}
+        </footer>
       </div>
     </>
   );

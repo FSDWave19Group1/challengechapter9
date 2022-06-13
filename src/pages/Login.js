@@ -36,6 +36,8 @@ export default function Register() {
 
   const handleOnClick = () => {
 
+    
+
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
@@ -80,7 +82,7 @@ export default function Register() {
           Login
         </Button>{' '}
 
-        <Button className="mt-4" variant="primary" type="submit" onClick={handleOnClick}>
+        <Button className="mt-4" variant="primary" onClick={handleOnClick}>
           Login with Google
         </Button>
       </form>
