@@ -7,12 +7,12 @@ import { UserAuth } from "../../context/AuthContext";
 const Layout = ({ children }) => {
   
   // const [isLoginPage, setIsLoginPage] = useState(false);
-  // const { loggedinEmail, setLoggedinEmail } = UserAuth();
+  const { loggedinEmail, setLoggedinEmail } = UserAuth();
   // console.log("user:" + loggedinEmail);  
 
-  // useEffect(() => {
-  //   setLoggedinEmail(localStorage.getItem("userEmail"));
-  // }, [localStorage]);
+  useEffect(() => {
+    setLoggedinEmail(localStorage.getItem("userEmail"));
+  }, [localStorage]);
 
   return ( 
     <>
