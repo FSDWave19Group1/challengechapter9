@@ -6,8 +6,12 @@ import Login from "./pages/Login";
 import Layout from "./components/layouts/default";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
+import { UserAuth } from "./context/AuthContext";
 
 function App() {
+  const { userEmail } = UserAuth();
+  console.log("user:" + userEmail);
+
   return (
     <Router>
       <Routes>

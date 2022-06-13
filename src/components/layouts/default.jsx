@@ -1,13 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import NavigationBar from "../NavigationBar"
 import Footer from "../Footer/Footer";
+import { UserAuth } from "../../context/AuthContext";
+
+
 
 const Layout = ({ children }) => {
-  return (
+  
+  // const [isLoginPage, setIsLoginPage] = useState(false);
+
+  const { userEmail } = UserAuth();
+  console.log("user:" + userEmail);  
+
+  return ( 
     <>
       <div>
         <header>
-          <NavigationBar />
+          <NavigationBar/>
         </header>
         <main className="container">{children}</main>
         <footer>
