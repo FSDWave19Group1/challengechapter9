@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Forgot from "./pages/Forgot";
 import GameList from "./pages/GameList";
 import Profile from "./pages/Profile";
+import Leaderboard from "./pages/Leaderboard";
 import { UserAuth } from "./context/AuthContext";
 
 function App() {
@@ -71,7 +72,14 @@ function App() {
             </Layout>
           }
         ></Route>
-        {/* <Route path="/game/list" element={<GameList />}></Route> */}
+        <Route
+          path="/game/leaderboard"
+          element={
+            <Layout>
+              <Leaderboard />
+            </Layout>
+          }
+        ></Route>
         {/* <Route path="/game/suit" element={<GameSuit />}></Route> */}
       </Routes>
     </Router>

@@ -47,6 +47,7 @@ const NavigationBar = (props) => {
           <Nav className="me-auto">
             <Nav.Link href="/userprofile">Profile</Nav.Link>
             <Nav.Link href="/game/list">Games List</Nav.Link>
+            <Nav.Link href="/game/leaderboard">Leaderboard</Nav.Link>
           </Nav>
 
           {loggedinEmail ? (
