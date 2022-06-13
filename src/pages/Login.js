@@ -36,14 +36,9 @@ export default function Register() {
 
   const handleOnClick = () => {
 
+    const auth = getAuth();
     const provider = new GoogleAuthProvider();
-    signInWithPopup(getAuth, provider)
-    .then((res) => {
-      console.log(res);
-    }) 
-    .catch((err) => {
-      console.log(err)
-    })
+    signInWithPopup(auth, provider)
   };
 
 
