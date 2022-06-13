@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -33,6 +33,20 @@ export default function Register() {
     localStorage.setItem("auth-token", user.accessToken);
     navigate("/");
   };
+
+  const handleOnClick = () => {
+
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(getAuth, provider)
+    .then((res) => {
+      console.log(res);
+    }) 
+    .catch((err) => {
+      console.log(err)
+    })
+  };
+
+
 
   return (
     <div>
@@ -63,10 +77,20 @@ export default function Register() {
           </InputGroup>
         </div>
 
+        <p>
+          <a href="/forgot">Forgot Password?</a>
+        </p>
+
         <Button className="mt-4" variant="success" type="submit">
           Login
+        </Button>{' '}
+
+        <Button className="mt-4" variant="primary" type="submit" onClick={handleOnClick}>
+          Login with Google
         </Button>
       </form>
     </div>
   );
 }
+
+

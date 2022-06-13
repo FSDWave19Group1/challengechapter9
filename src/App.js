@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "./components/layouts/default";
 import Home from "./pages/Home";
+import Forgot from "./pages/Forgot";
 
 function App() {
   return (
@@ -33,6 +34,14 @@ function App() {
           element={
             <Layout>
               <Register />
+            </Layout>
+          }
+        ></Route>
+        <Route
+          path="/forgot"
+          element={
+            <Layout>
+              <Forgot />
             </Layout>
           }
         ></Route>
