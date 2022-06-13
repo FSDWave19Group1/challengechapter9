@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "./components/layouts/default";
 import Home from "./pages/Home";
+import GameList from "./pages/GameList";
 
 function App() {
   return (
@@ -37,7 +38,14 @@ function App() {
           }
         ></Route>
         {/* <Route path="/userprofile" element={<UserProfile />}></Route> */}
-        {/* <Route path="/game/list" element={<GameList />}></Route> */}
+        <Route
+          path="/game/list"
+          element={
+            <Layout>
+              <GameList />
+            </Layout>
+          }
+        ></Route>
         {/* <Route path="/game/suit" element={<GameSuit />}></Route> */}
       </Routes>
     </Router>
