@@ -4,11 +4,12 @@ import firebase from "./services/firebase";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Layout from "./components/layouts/default";
-import Home from "./pages/Home";
+import Home from "./pages/landingPage";
 import Forgot from "./pages/Forgot";
 import GameList from "./pages/GameList";
 import Profile from "./pages/Profile";
 import Leaderboard from "./pages/Leaderboard";
+import GameSuit from "./components/Game";
 import { UserAuth } from "./context/AuthContext";
 
 function App() {
@@ -55,7 +56,6 @@ function App() {
             </Layout>
           }
         ></Route>
-        {/* <Route path="/userprofile" element={<UserProfile />}></Route> */}
         <Route
           path="/game/list"
           element={
@@ -80,7 +80,7 @@ function App() {
             </Layout>
           }
         ></Route>
-        {/* <Route path="/game/suit" element={<GameSuit />}></Route> */}
+        <Route path="/game/suit" element={<GameSuit />}></Route>
       </Routes>
     </Router>
   );
