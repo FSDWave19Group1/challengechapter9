@@ -1,53 +1,96 @@
-import React from "react";
+import React, { useState } from "react";
 import '../components/Game.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Image } from "react-bootstrap";
-import CobaKlikDom from "../components/cobaAja";
+
+const ComPlayer = ['batu', 'kertas', 'gunting']
+const RandomCom = ComPlayer[Math.floor(Math.random()*ComPlayer.length)]
+const PlayerBatu = document.getElementById("batu")
+const PlayerKertas = document.getElementById("kertas")
+const PlayerGunting = document.getElementById("gunting")
+
+// const BgPlayerBatu = document.className("bg-batu")
+// const BgPlayerKertas = document.getElementById("bg-kertas")
+// const BgPlayerGunting = document.getElementById("bg-gunting")
+
+const bgVersus = document.getElementById("vs")
 
 class GameSuite extends React.Component {
 
-    // const RockPlayer = document.getElementbyId("batu")
-    // const PaperPlayer = document.getElementbyId("kertas")
-    // const ScissorsPlayer = document.getElementbyId("gunting")
-
     ClickRock = () => {
         this.ChoosePlayer("batu")
-        this.ChooseCom(RandomComPlayer)
+        // BgPlayerBatu.classList.add("bg-abu")
+        // PlayerGunting.removeAttribute("onClick")
+        // PlayerKertas.removeAttribute("onClick")
     }
 
     ClickPaper = () => {
         this.ChoosePlayer("kertas")
+        // PlayerBatu.removeAttribute("onClick")
+        // PlayerGunting.removeAttribute("onClick")
     }
 
     ClickScissors = () => {
         this.ChoosePlayer("gunting")
+        // PlayerBatu.removeAttribute("onClick")
+        // PlayerKertas.removeAttribute("onClick")
     }
+
+    RandomComPlayer = RandomCom
 
     ChoosePlayer = (player) => {
         if (player === "batu"){
-            console.log("batu jalan")
-            ChooseCom(random)
+            console.log("player 1 batu")
+            this.ChooseCom(this.RandomComPlayer)
+            this.GamePlay(player,this.RandomComPlayer)
         } else if (player === "kertas"){
-            console.log("kertas jalan")
+            console.log("player 1 kertas")
+            this.ChooseCom(this.RandomComPlayer)
+            this.GamePlay(player,this.RandomComPlayer)
         } else if (player === "gunting"){
-            console.log("gunting jalan")
+            console.log("player 1 gunting")
+            this.ChooseCom(this.RandomComPlayer)
+            this.GamePlay(player,this.RandomComPlayer)
         }
     }
 
-    ComPlayer = ['rock', 'paper', 'scissors']
-    RandomComPlayer = ComPlayer[Math.floor(Math.random()*ComPlayer.length)]
-
-    ChooseCom(random){
-        if (random === 'rock'){
-            // document.getElementById("bgRockCom").classList.add("bgAbu")
-            console.log('com batu')
-        } else if (random === 'paper') {
-            // document.getElementById("bgPaperCom").classList.add("bgAbu")
-            console.log('com kertas')
-        } else if (random === 'scissors') {
-            // document.getElementById("bgScissorsCom").classList.add("bgAbu")
-            console.log('com gunting')
+    
+    // buat ganti background klu di klik tapi belum jalan
+    ChooseCom(com){
+        if (com === 'batu'){
+            // document.getElementById("bgRockCom").classList.add("bg-abu")
+            console.log('player com batu')
+        } else if (com === 'kertas') {
+            // document.getElementById("bgPaperCom").classList.add("bg-abu")
+            console.log('player com kertas')
+        } else if (com === 'gunting') {
+            // document.getElementById("bgScissorsCom").classList.add("bg-abu")
+            console.log('player com gunting')
         }
+    }
+
+    GamePlay = (player1,player2) => {
+        let CekPlayer = (player1+player2)
+        console.log(CekPlayer)
+        if (CekPlayer === "batubatu" || CekPlayer === "kertaskertas" || CekPlayer === "guntinggunting"){
+            console.log("draw")
+            // bgVersus.src="https://cdn.discordapp.com/attachments/909631425823768586/984440885095825448/bg-draw.png"
+            // bgVersus.classList.add("setImgVs")
+        } else if (CekPlayer === "batugunting" || CekPlayer === "kertasbatu" || CekPlayer === "guntingkertas"){
+            console.log("player 1 win")
+            // document.getElementById("vs").src("https://cdn.discordapp.com/attachments/909631425823768586/984440885095825448/bg-draw.png")
+            // bgVersus.src="https://cdn.discordapp.com/attachments/909631425823768586/984440885376876554/bgPlayer1Win.png"
+            // bgVersus.classList.add("setImgVs")
+        } else if (CekPlayer === "batukertas" || CekPlayer === "kertasgunting" || CekPlayer === "guntingbatu"){
+            console.log("COM win")
+            // document.getElementById("vs").src("https://cdn.discordapp.com/attachments/909631425823768586/984440885095825448/bg-draw.png")
+            // bgVersus.src="https://cdn.discordapp.com/attachments/909631425823768586/984440884902899772/bgComWin.png"
+            // bgVersus.classList.add("setImgVs")
+        }    
+    }
+
+    RefreshPage(){
+        window.location.reload()
     }
     
     
@@ -122,7 +165,7 @@ class GameSuite extends React.Component {
                             </div>
                             <div className="row">
                                 <div className="d-flex justify-content-center refresh">
-                                    <Image className="fas fa-sync fa-spin" src="https://cdn.discordapp.com/attachments/909631425823768586/984440886479978536/refresh.png"/>
+                                    <Image className="fas fa-sync fa-spin" src="https://cdn.discordapp.com/attachments/909631425823768586/984440886479978536/refresh.png" onClick={this.RefreshPage}/>
                                 </div>
                             </div>
                         </div>
