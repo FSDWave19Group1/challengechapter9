@@ -40,20 +40,7 @@ const Register = () => {
     // [END auth_signup_password]
   };
 
-  const auth = getAuth();
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      // ...
-      alert("Success Registration");
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(errorMessage);
-    });
-  // [END auth_signup_password]
+ 
 
   return (
     <div>
