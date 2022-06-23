@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./css/GameList.css";
+import "../assets/css/GameList.css";
 import { Card, Button } from "react-bootstrap";
 import { getDatabase, ref, child, get } from "firebase/database";
 
@@ -23,14 +23,18 @@ export default function GameList() {
   console.log(gameList[0].game_url);
   return (
     <div className="game-list-background">
-      <div className="grid-card container">
-        {gameList.map((e, i) => {
-          return (
-            <div key={i} className="">
-              <Card style={{ width: "18rem" }}>
+      <div className="container">
+        <div className="card-game d-flex row">
+          {gameList.map((game, index) => {
+            return (
+              <Card
+                style={{ width: "18rem" }}
+                key={index}
+                className="col-sm-4 m-3"
+              >
                 <Card.Body>
-                  <Card.Title>{e.game_name}</Card.Title>
-                  <Card.Text>{e.description}</Card.Text>
+                  <Card.Title>{game.game_name}</Card.Title>
+                  <Card.Text>{game.description}</Card.Text>
                   <div className="text-end">
                     <Link to="/game/suit">
                       <Button variant="primary">Play!</Button>
@@ -38,9 +42,9 @@ export default function GameList() {
                   </div>
                 </Card.Body>
               </Card>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );

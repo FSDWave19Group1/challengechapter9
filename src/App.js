@@ -1,28 +1,24 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./App.css";
 import firebase from "./services/firebase";
+import "./App.css";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Layout from "./components/layouts/default";
-import Home from "./pages/Home";
+import Home from "./pages/landingPage";
 import Forgot from "./pages/Forgot";
 import GameList from "./pages/GameList";
 import Profile from "./pages/Profile";
 import Leaderboard from "./pages/Leaderboard";
+import GameSuit from "./pages/game/suit";
 import { UserAuth } from "./context/AuthContext";
 
 function App() {
   const { loggedinEmail } = UserAuth();
   console.log("user:" + loggedinEmail);
 
-  // const [userLoggon, setUserLoggon] = useState("");
-
-  // setUserLoggon
-
   return (
     <Router>
       <Routes>
-        {/* <Route path="/" element={<Home />}></Route> */}
         <Route
           path="/"
           element={
@@ -80,7 +76,7 @@ function App() {
             </Layout>
           }
         ></Route>
-        {/* <Route path="/game/suit" element={<GameSuit />}></Route> */}
+        <Route path="/game/suit" element={<GameSuit />}></Route>
       </Routes>
     </Router>
   );

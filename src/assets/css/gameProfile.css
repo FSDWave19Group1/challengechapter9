@@ -1,0 +1,25 @@
+.user-profile {
+  margin: auto;
+  padding: 2em 2em;
+  border-radius: 5%;
+  background-color: #00000088;
+  color: white;
+}
+
+.user-profile-background {
+  background-image: url("../img/requirements.png");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  padding-top: 5em;
+}
+
+@media (min-width: 1080px) {
+  .user-profile {
+    width: 60em;
+  }
+
+  .user-profile-background {
+    height: 70vh;
+  }
+}

@@ -1,32 +1,17 @@
 import { useState, useEffect } from "react";
 // import NavigationBar from "../components/NavigationBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { Fragment } from "react";
-import Form from "react-bootstrap/Form";
+import "../assets/css/gameProfile.css";
+import React from "react";
 import { getDatabase, ref, query, onValue } from "firebase/database";
 import { UserAuth } from "../context/AuthContext";
+import DataPreview from "../components/ui/dataPreview";
 
 export default function Profile() {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [name, setName] = useState("");
-  // const [biodata, setBiodata] = useState("");
-  //const [userID, setUserID] = useState("Ht2AaA00rPMbsECgWwsvUGe71M62");
-  // const [email, setEmail] = useState("vaee@gmail.com");
-
   const { loggedinEmail } = UserAuth();
   console.log("useremail:" + localStorage.getItem("userEmail"));
-  // const [info, setInfo] = useState({});
-  // const [detailUser, setDetailUser] = useState({
-  //   id: "",
-  //   username: "",
-  //   email: "",
-  //   biodata: "",
-  //   score_total: "",
-  // });
 
   const [detailUser, setDetailUser] = useState({});
-  // let userfiltered = {};
 
   useEffect((props) => {
     const db = getDatabase();
@@ -59,43 +44,18 @@ export default function Profile() {
   }, []);
 
   return (
-    <Fragment>
-      <Form>
-        <fieldset disabled>
-          <Form.Group className="mb-3">
-            <Form.Label htmlFor="disabledTextInput">Id</Form.Label>
-            <Form.Control id="disabledTextInput" defaultValue={detailUser.id} />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label htmlFor="disabledTextInput">User Name</Form.Label>
-            <Form.Control
-              id="disabledTextInput"
-              defaultValue={detailUser.username}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label htmlFor="disabledTextInput">Email</Form.Label>
-            <Form.Control
-              id="disabledTextInput"
-              defaultValue={detailUser.email}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label htmlFor="disabledTextInput">Score</Form.Label>
-            <Form.Control
-              id="disabledTextInput"
-              defaultValue={detailUser.score_total}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label htmlFor="disabledTextInput">Bio</Form.Label>
-            <Form.Control
-              id="disabledTextInput"
-              defaultValue={detailUser.biodata}
-            />
-          </Form.Group>
-        </fieldset>
-      </Form>
-    </Fragment>
+    <div className="user-profile-background">
+      <div className="container">
+        <div className="user-profile">
+          <h1 className="my-3">Profile Details</h1>
+          <DataPreview field="ID" value={detailUser.id} />
+          <DataPreview field="Username" value={detailUser.username} />
+          <DataPreview field="Email" value={detailUser.email} />
+          <DataPreview field="Score" value={detailUser.score_total} />
+          <DataPreview field="Bio" value={detailUser.biodata} />
+          <div className="my-4"></div>
+        </div>
+      </div>
+    </div>
   );
 }

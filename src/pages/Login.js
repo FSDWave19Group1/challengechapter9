@@ -17,7 +17,6 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [isLoginPage, setLoginPage] = useState(false);
 
-  // const [userEmail, setUserEmail] = useState("");
   const { setLoggedinEmail } = UserAuth();
 
   const handleSubmit = async (e) => {

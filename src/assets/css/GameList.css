@@ -2,12 +2,10 @@
   background-image: url("../../../public/main-bg.jpg");
   background-position: center;
   background-size: cover;
+  height: calc(100vh - 216px);
 }
 
-.grid-card {
+.card-game {
   padding-top: 3em;
   padding-bottom: 5em;
-  display: grid;
-  gap: 2em;
-  grid-template-columns: 1fr 1fr 1fr;
 }
