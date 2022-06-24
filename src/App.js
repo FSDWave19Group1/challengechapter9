@@ -7,7 +7,7 @@ import Layout from "./components/layouts/default";
 import Home from "./pages/landingPage";
 import Forgot from "./pages/Forgot";
 import GameList from "./pages/GameList";
-import Profile from "./pages/Profile";
+import Profile from "./pages/userprofile/Profile";
 import Leaderboard from "./pages/Leaderboard";
 import GameSuit from "./pages/game/suit";
 import { UserAuth } from "./context/AuthContext";

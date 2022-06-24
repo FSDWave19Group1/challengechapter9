@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 // import NavigationBar from "../components/NavigationBar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../assets/css/gameProfile.css";
+import "../../assets/css/gameProfile.css";
 import React from "react";
 import { getDatabase, ref, query, onValue } from "firebase/database";
-import { UserAuth } from "../context/AuthContext";
-import DataPreview from "../components/ui/dataPreview";
+import { UserAuth } from "../../context/AuthContext";
+import DataPreview from "../../components/ui/dataPreview";
 
 export default function Profile() {
   const { loggedinEmail } = UserAuth();
@@ -48,6 +48,7 @@ export default function Profile() {
       <div className="container">
         <div className="user-profile">
           <h1 className="my-3">Profile Details</h1>
+          <div></div>
           <DataPreview field="ID" value={detailUser.id} />
           <DataPreview field="Username" value={detailUser.username} />
           <DataPreview field="Email" value={detailUser.email} />

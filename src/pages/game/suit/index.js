@@ -9,6 +9,7 @@ export default function GameSuit() {
   const [userScore, setUserScore] = useState(0);
   const { loggedinEmail } = UserAuth();
   console.log("useremail:" + localStorage.getItem("userEmail"));
+  if (!localStorage.getItem("user")) return <Navigate to="/login" />;
   const user = JSON.parse(localStorage.getItem("user"));
 
   function updateScore(userId, scorePlus) {

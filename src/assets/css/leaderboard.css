@@ -1,0 +1,8 @@
+.leaderboard-background {
+  background-image: url("../img/features.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  padding-top: 2.5em;
+  color: white;
+}
