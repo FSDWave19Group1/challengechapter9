@@ -17,7 +17,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [isLoginPage, setLoginPage] = useState(false);
 
-  const { setLoggedinEmail } = UserAuth();
+  const { setLoggedinEmail, setLoggedinUser } = UserAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,8 +27,10 @@ export default function Register() {
       .then((userCredential) => {
         // alert("success");
         localStorage.setItem("userEmail", userCredential.user.email);
+        localStorage.setItem("user", JSON.stringify(userCredential.user));
         // setLoggedinEmail(userCredential.user.email);
         setLoggedinEmail(localStorage.getItem("userEmail"));
+        setLoggedinUser(localStorage.getItem("user"));
         getCurrentUser();
         navigate("/");
       })

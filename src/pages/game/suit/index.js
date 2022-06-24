@@ -1,8 +1,28 @@
 /* eslint-disable eqeqeq */
-import React from "react";
+import React, { useState } from "react";
+import { Navigate } from "react-router";
 import "../../../assets/css/game_suit.css";
+import { UserAuth } from "../../../context/AuthContext";
+import { getDatabase, ref, update, onValue } from "firebase/database";
 
 export default function GameSuit() {
+  const [userScore, setUserScore] = useState(0);
+  const { loggedinEmail } = UserAuth();
+  console.log("useremail:" + localStorage.getItem("userEmail"));
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  function updateScore(userId, scorePlus) {
+    const db = getDatabase();
+    const scoreCountRef = ref(db, "users/" + userId + "/score_total");
+    onValue(scoreCountRef, (snapshot) => {
+      const data = snapshot.val();
+      setUserScore(data);
+    });
+    const updates = {};
+    updates["/users/" + userId + "/score_total"] = userScore + scorePlus;
+    return update(ref(db), updates);
+  }
+
   function ActiveStateRemoval() {
     const allChoices = document.querySelectorAll(".choice");
     allChoices.forEach((choice) => {
@@ -56,6 +76,7 @@ export default function GameSuit() {
     botWin.style.display = "none";
     draw.style.display = "none";
     playerWin.style.display = "block";
+    updateScore(user.uid, 10);
     console.log("---------------ROUND END---------------");
   }
 
@@ -70,6 +91,7 @@ export default function GameSuit() {
     botWin.style.display = "block";
     draw.style.display = "none";
     playerWin.style.display = "none";
+    updateScore(user.uid, -3);
     console.log("---------------ROUND END---------------");
   }
 
@@ -84,6 +106,7 @@ export default function GameSuit() {
     botWin.style.display = "none";
     draw.style.display = "block";
     playerWin.style.display = "none";
+    // updateScore(user.uid, 0);
     console.log("---------------ROUND END---------------");
   }
 

@@ -51,7 +51,6 @@ function App() {
             </Layout>
           }
         ></Route>
-        {/* <Route path="/userprofile" element={<UserProfile />}></Route> */}
         <Route
           path="/game/list"
           element={
