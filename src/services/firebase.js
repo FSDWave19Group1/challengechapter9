@@ -13,11 +13,12 @@ const firebaseConfig = {
   storageBucket: "challenge9-53323.appspot.com",
   messagingSenderId: "209156721349",
   appId: "1:209156721349:web:50a76ae1c0c87a63efbeac",
-  measurementId: "G-43CHL22358"
+  measurementId: "G-43CHL22358",
+  databaseURL: "https://challenge9-53323-default-rtdb.firebaseio.com/",
 };
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 // Get a reference to the database service
-var database = firebase.database();
+const database = getDatabase(app);
+// Initialize Firebase
+export default initializeApp(firebaseConfig);
