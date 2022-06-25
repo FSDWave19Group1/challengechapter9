@@ -4,9 +4,12 @@ const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [loggedinEmail, setLoggedinEmail] = useState("");
+  const [loggedinUser, setLoggedinUser] = useState({});
 
   return (
-    <UserContext.Provider value={{ loggedinEmail, setLoggedinEmail }}>
+    <UserContext.Provider
+      value={{ loggedinEmail, setLoggedinEmail, loggedinUser, setLoggedinUser }}
+    >
       {" "}
       {children}
     </UserContext.Provider>

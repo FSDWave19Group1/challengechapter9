@@ -8,6 +8,7 @@ import {
   limitToLast,
   onValue,
 } from "firebase/database";
+import "../assets/css/leaderboard.css";
 
 export default function Leaderboard() {
   const db = getDatabase();
@@ -29,34 +30,42 @@ export default function Leaderboard() {
         };
         detail.push(user);
       });
+      detail.sort((a, b) => b.score_total - a.score_total);
       setInfo(detail);
       console.log(info);
     });
   }, []);
 
   return (
-    <div style={{ margin: 60 }}>
-      <h1 style={{ margin: 40 }}>Leaderboard</h1>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Position</th>
-            <th>Username</th>
-            <th>Points</th>
-          </tr>
-        </thead>
-        <tbody>
-          {info.map((item, key) => {
-            return (
-              <tr>
-                <td>{key + 1}</td>
-                <td>{item.username}</td>
-                <td>{item.score_total}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
+    <div className="leaderboard-background">
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-6"></div>
+          <div className="col-sm-6">
+            <h1 className="my-4">Leaderboard</h1>
+            <Table striped bordered hover variant="dark">
+              <thead>
+                <tr>
+                  <th>Position</th>
+                  <th>Username</th>
+                  <th>Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                {info.map((item, key) => {
+                  return (
+                    <tr>
+                      <td>{key + 1}</td>
+                      <td>{item.username}</td>
+                      <td>{item.score_total}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

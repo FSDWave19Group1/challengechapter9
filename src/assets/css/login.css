@@ -1,0 +1,12 @@
+.login-background {
+  background-image: url("../../../public/main-bg.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  padding-top: 2.5em;
+  color: white;
+}
+
+.login-card {
+  width: 50vw;
+}

@@ -1,24 +1,20 @@
-import React, {useState,useEffect} from "react";
-import NavigationBar from "../NavigationBar"
-import Footer from "../Footer/Footer";
+import React, { useEffect } from "react";
+import NavigationBar from "../navbar/NavigationBar";
+import Footer from "../footer/Footer";
 import { UserAuth } from "../../context/AuthContext";
 
-
 const Layout = ({ children }) => {
-  
-  // const [isLoginPage, setIsLoginPage] = useState(false);
   const { loggedinEmail, setLoggedinEmail } = UserAuth();
-  // console.log("user:" + loggedinEmail);  
 
   useEffect(() => {
     setLoggedinEmail(localStorage.getItem("userEmail"));
   }, [localStorage]);
 
-  return ( 
+  return (
     <>
-      <div>
+      <div className="position-relative">
         <header>
-          <NavigationBar/>
+          <NavigationBar />
         </header>
         <main>{children}</main>
         <footer>
