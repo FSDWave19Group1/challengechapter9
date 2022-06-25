@@ -3,8 +3,6 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../assets/css/landingPage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 
 const BackgroundImagePage = () => {
   return (

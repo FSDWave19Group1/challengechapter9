@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import NavigationBar from "../navbar/NavigationBar";
-import Footer from "../footer/Footer";
+import Footer from "../Footer/Footer";
 import { UserAuth } from "../../context/AuthContext";
 
 const Layout = ({ children }) => {
